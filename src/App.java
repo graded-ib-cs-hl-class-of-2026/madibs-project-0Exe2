@@ -10,11 +10,23 @@ public class App {
      * Do NOT edit this method until after you have fully satisfied the reqs for a 5
      */
 
+    // class-wide scanner object (so don't need to create a new one in every function)
     Scanner scan = new Scanner(System.in);
 
+    // ANSI reset color code
     // ansi code from from https://www.geeksforgeeks.org/how-to-print-colored-text-in-java-console/
     public static final String ANSI_RESET = "\u001B[0m";
 
+    /*
+        This is a function to start the game and run the game loop
+        and call all other functions
+
+        Parameters:
+            - none
+
+        Returns:
+            - none
+    */
     public void start() {
         boolean userWantsToStop = false;
 
@@ -71,8 +83,7 @@ public class App {
     }
 
     /*
-        This is a helper function that will print a prompt to the user
-        and return their input
+        This is a helper function to return the ANSI color code of a specific color
 
         Parameters:
             - colorName (type String): the color name for the function to return
@@ -99,14 +110,45 @@ public class App {
         return colors.get(colorName);
     }
 
+    /*
+        This is a helper function to print line to console in a specific color
+
+        Parameters:
+            - colorName (type String): the color name for the function to print
+              in
+            - message (type String): the message to display to the user
+
+        Returns:
+            - void
+    */
     public void printColoredLn(String colorName, String message) {
         System.out.println(getColorCodes(colorName) + message + ANSI_RESET);
     }
 
+    /*
+        This is a helper function to return a string in a specific color
+
+        Parameters:
+            - colorName (type String): the color name for the function to return
+              the color text for
+            - message (type String): the message to embed in formatted color codes
+
+        Returns:
+            - (type String): the colored text
+    */
     public String returnColoredText(String colorName, String message) {
         return getColorCodes(colorName) + message + ANSI_RESET;
     }
 
+    /*
+        This is a function to print the instructions for the game
+
+        Parameters:
+            - none
+
+        Returns:
+            - none
+    */
     public void printInstructions() {
         // ASCII art from https://patorjk.com/software/taag/#p=display&f=RubiFont&t=Madlibs
         printColoredLn("green", """
@@ -130,6 +172,15 @@ public class App {
         System.out.println(returnColoredText("green", "│") + " • Repeat until you're tired of laughing");
     }
 
+    /*
+        This is a function to print the greeting for the game
+
+        Parameters:
+            - none
+
+        Returns:
+            - none
+    */
     public void printGreeting() {
         printColoredLn("green","├──────────────────────────╮"); // ╭
         printColoredLn("green","│    Welcome to Madlibs    │");
@@ -143,6 +194,15 @@ public class App {
         System.out.println(returnColoredText("green", "│") + " Let's play a game!");
     }
 
+    /*
+        This is a function to run and play the madlib game
+
+        Parameters:
+            - none
+
+        Returns:
+            - none
+    */
     public void doMadlib() {
         // I'll create an array of the terms I need, and loop
         // through it to create a map of terms to the user's input
