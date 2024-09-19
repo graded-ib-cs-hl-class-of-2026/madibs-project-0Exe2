@@ -205,7 +205,7 @@ public class App {
     */
     public void doMadlib() {
         // I'll create an array of the terms I need, and loop
-        // through it to create a map of terms to the user's input
+        // through it to create a map of terms for the user's input
 
         // https://www.w3schools.com/java/java_arrays.asp
         String[] terms = {
@@ -219,7 +219,7 @@ public class App {
             "animal",
             "color",
             "plural noun",
-            "place"
+            "location"
         };
 
         HashMap<String, String> userInputs = new HashMap<String, String>();
@@ -233,11 +233,12 @@ public class App {
 
             String userInput = getUserInput();
 
+            // this adds the user's input to the hashmap
             userInputs.put(term, userInput);
         }
 
         String story = "There was once an epic [profession] from [country] who moved\n" +
-            returnColoredText("green", "│") + " " + "to a [place]. They were known for their [adjective] [noun]\n" +
+            returnColoredText("green", "│") + " " + "to a [location]. They were known for their [adjective] [noun]\n" +
             returnColoredText("green", "│") + " " + "and their trusty [tool]. They lived with [family member]\n" +
             returnColoredText("green", "│") + " " + "and their pet [animal]. They loved the color [color] and\n" +
             returnColoredText("green", "│") + " " + "were known by the pseudonym [name]. They were always\n" +
